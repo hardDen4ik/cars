@@ -1,7 +1,9 @@
 <?php
 
+use common\models\Basket;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\products\models\ProductsSearch */
@@ -20,7 +22,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'title',
+            [
+                'attribute' => 'title',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::a($model->title, Url::toRoute(['view', 'id' => $model->id]));
+                },
+            ],
+
+            //'title',
             //'descr:ntext',
             'price',
             [
@@ -40,7 +50,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{myButton}',
+                'buttons' => [
+                    'myButton' => function($url, $model, $key) {
+                        return Html::a('В корзину', Url::toRoute(['/basket/basket/save', 'product_id' => $model->id]));
+                }
+                ]
+            ]
         ],
     ]); ?>
 

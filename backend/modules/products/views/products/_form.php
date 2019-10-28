@@ -54,7 +54,7 @@ use yii\grid\GridView;
                     'data' =>
                         [
                             \common\models\Products::STATUS_ACTIVE => 'Активен',
-                            \common\models\Products::STATUS_PASSIVE => 'Неактивен',
+                            \common\models\Products::STATUS_DISABLED => 'Неактивен',
                         ],
                     'options' => ['placeholder' => '...', 'class' => 'form-control', 'multiple' => false],
                     'pluginOptions' => [

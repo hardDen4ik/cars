@@ -77,7 +77,7 @@ class Products extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getProductByCategory()
+    public static function getProductByCategory()
     {
         Products::findAll(['category_id' => Yii::$app->request->get('category_id')]);
     }

@@ -13,13 +13,15 @@ return [
     'modules' => [
         'products' => [
             'class' => 'app\modules\products\Products',
-                    ]
         ],
+        'basket' => [
+            'class' => 'app\modules\basket\Basket',
+        ],
+    ],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
-            'baseUrl' => '/',
-
+            'baseUrl' => '',
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [

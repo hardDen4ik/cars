@@ -61,9 +61,11 @@ class Category extends \yii\db\ActiveRecord
     public static function getArrayForSidebar()
     {
         $result = [];
+        $result[] = ['label' => 'Корзина', 'url' => '/basket/basket'];
+        $result[] = ['label' => 'Все товары', 'url' => '/products/products'];
         $categories = Category::find()->all();
         foreach ($categories as $category) {
-            $result[] = ['label' => $category->name, 'url' => '?category_id='.$category->id];
+            $result[] = ['label' => $category->name, 'url' => '/products/products?ProductsSearch[category_id]='.$category->id];
         }
         return $result;
     }
@@ -73,5 +75,5 @@ class Category extends \yii\db\ActiveRecord
     public function getProducts()
     {
         return $this->hasMany(Products::className(), ['category_id' => 'id']);
-    }
+}
 }
